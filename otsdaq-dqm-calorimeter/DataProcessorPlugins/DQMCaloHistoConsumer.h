@@ -3,7 +3,7 @@
 
 #include "otsdaq/DataManager/DQMHistosConsumerBase.h"
 #include "otsdaq/Configurable/Configurable.h"
-#include "otsdaq-dqm/ArtModules/ProtoTypeHistos.h"
+#include "otsdaq-dqm-calorimeter/ArtModules/ProtoTypeHistos.h"
 #include <string>
 
 class TFile;
