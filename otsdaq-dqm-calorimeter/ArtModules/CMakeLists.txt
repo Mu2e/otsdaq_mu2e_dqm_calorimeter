@@ -78,7 +78,8 @@ canvas
  )
 
  simple_plugin(CaloSpy "module"
- otsdaq-trigger_Overlays
+ mu2e-artdaq-core_Overlays
+ DTCInterface
  artdaq_DAQrate
  artdaq_DAQdata
  artdaq-core_Data
