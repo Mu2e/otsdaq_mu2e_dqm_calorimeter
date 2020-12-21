@@ -92,99 +92,98 @@
 #include <unordered_map>
 #include <vector>
 
+#define TRACE_NAME "CaloTest"
+
 namespace ots
 {
-    class CaloTest : public art::EDAnalyzer
-    {
-      public:
-	    explicit CaloTest(fhicl::ParameterSet const& pset);
-	    virtual ~CaloTest();
+	class CaloTest : public art::EDAnalyzer
+	{
+	public:
+		explicit CaloTest(fhicl::ParameterSet const& pset);
+		virtual ~CaloTest();
 
-	    void analyze(art::Event const& e) override;
-	    void beginRun(art::Run const&) override;
-        void beginJob() override;
-        void endJob() override;
-	   
-        void PlotRate(art::Event const& e);
-    private:
-        art::RunNumber_t current_run_;
-        std::string outputFileName_;
-        art::ServiceHandle<art::TFileService> tfs;
-        bool writeOutput_;
-        bool doStreaming_;
-        bool overwrite_mode_;
+		void analyze(art::Event const& e) override;
+		void beginRun(art::Run const&) override;
+		void beginJob() override;
+		void endJob() override;
 
-        art::InputTag _trigAlgTag;
-        art::InputTag _sdMCTag;
-        art::InputTag _sdTag;
-        
-        double _duty_cycle;
-        string _processName;
+		void PlotRate(art::Event const& e);
+	private:
+		art::RunNumber_t current_run_;
+		std::string outputFileName_;
+		art::ServiceHandle<art::TFileService> tfs;
+		bool writeOutput_;
+		bool doStreaming_;
+		bool overwrite_mode_;
 
-        float _nProcess;
-        double _bz0;
+		art::InputTag _trigAlgTag;
+		art::InputTag _sdMCTag;
+		art::InputTag _sdTag;
 
-        double _nPOT;
-          
-        const mu2e::Tracker*      _tracker;
-        const mu2e::StrawDigiMCCollection* _mcdigis;
-       
-        const art::Event*                  _event;
-        CaloTestHistos *histos = new CaloTestHistos("hCalo");
-        TCPPublishServer *tcp ;
-        
-    };
+		double _duty_cycle;
+		string _processName;
+
+		float _nProcess;
+		double _bz0;
+
+		double _nPOT;
+
+		const mu2e::Tracker* _tracker;
+		const mu2e::StrawDigiMCCollection* _mcdigis;
+
+		const art::Event* _event;
+		CaloTestHistos* histos = new CaloTestHistos("hCalo");
+		TCPPublishServer* tcp;
+
+	};
 }
 
 ots::CaloTest::CaloTest(fhicl::ParameterSet const& pset)
-    : art::EDAnalyzer(pset),
-    current_run_(0),
-    outputFileName_(pset.get<std::string>("fileName", "DQMCaloTest.root")),
-    writeOutput_(pset.get<bool>("write_to_file", true)),
-    doStreaming_(pset.get<bool>("stream_to_screen", true)),
-    overwrite_mode_(pset.get<bool>("overwrite_output_file", true)),
-    _duty_cycle    (pset.get<float> ("dutyCycle", 1.)),
-    _processName   (pset.get<string> ("processName", "caloTest")),
-    _nProcess      (pset.get<float> ("nEventsProcessed", 1.)),
-    tcp(new TCPPublishServer(pset.get<int>("listenPort", 6000)))
-  {
-    TLOG_INFO("CaloTest") << "CaloTest construction is beginning " << TLOG_ENDL; 
-    TLOG_DEBUG("CaloTest") << "CaloTest construction complete" << TLOG_ENDL;
- }
+	: art::EDAnalyzer(pset),
+	current_run_(0),
+	outputFileName_(pset.get<std::string>("fileName", "DQMCaloTest.root")),
+	writeOutput_(pset.get<bool>("write_to_file", true)),
+	doStreaming_(pset.get<bool>("stream_to_screen", true)),
+	overwrite_mode_(pset.get<bool>("overwrite_output_file", true)),
+	_duty_cycle(pset.get<float>("dutyCycle", 1.)),
+	_processName(pset.get<string>("processName", "caloTest")),
+	_nProcess(pset.get<float>("nEventsProcessed", 1.)),
+	tcp(new TCPPublishServer(pset.get<int>("listenPort", 6000)))
+{
+	TLOG(TLVL_INFO) << "CaloTest construction is beginning ";
+	TLOG(TLVL_DEBUG) << "CaloTest construction complete";
+}
 
 ots::CaloTest::~CaloTest() {}
 
 
 
-void ots::CaloTest::beginJob(){
-  TLOG_INFO("CaloTest - BeginJob")
-	    << "Started" << TLOG_ENDL;
-    histos->BookHistos(tfs);
+void ots::CaloTest::beginJob() {
+	TLOG(TLVL_INFO) << "Started";
+	histos->BookHistos(tfs);
 }
 
 void ots::CaloTest::analyze(art::Event const& event)
 {
-	TLOG_INFO("CaloTest - Event")
-	    << "CaloTest Module is Analyzing Event #  " << event.event() << TLOG_ENDL;
-    double value = 100.;
-    histos->CaloTest._FirstCaloHist->Fill(value);
-    TBufferFile message(TBuffer::kWrite);
+	TLOG(TLVL_INFO) << "CaloTest Module is Analyzing Event #  " << event.event();
+	double value = 100.;
+	histos->CaloTest._FirstCaloHist->Fill(value);
+	TBufferFile message(TBuffer::kWrite);
 	message.WriteObject(histos->CaloTest._FirstCaloHist);
 
-   //__CFG_COUT__ << "Broadcasting!" << std::endl;
-   tcp->broadcastPacket(message.Buffer(), message.Length());
+	//__CFG_COUT__ << "Broadcasting!" << std::endl;
+	tcp->broadcastPacket(message.Buffer(), message.Length());
 
 }
 
 
-  void ots::CaloTest::endJob(){
-    TLOG_INFO("CaloTest - EndJob")
-	    << "Completed" << TLOG_ENDL;
-  }
+void ots::CaloTest::endJob() {
+	TLOG(TLVL_INFO) << "Completed";
+}
 
- void ots::CaloTest::beginRun(const art::Run & run){
- 
-  }
+void ots::CaloTest::beginRun(const art::Run& run) {
+
+}
 
 
 
