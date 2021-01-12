@@ -47,20 +47,20 @@ canvas
  simple_plugin(CaloTest "module"
  artdaq-core_Utilities
  NetworkUtilities
- artdaq-core_Data
- artdaq-core_Core
- ${ROOT_CORE}
- ${ROOT_GPAD}
- ${ROOT_HIST}
- ${ROOT_GUI}
- ${ROOT_RIO}
- ${ROOT_NET}
- ${CETLIB_EXCEPT}
- art_Framework_Services_Registry  
- art_root_io
- art_root_io_tfile_support
- art_root_io_TFileService_service
- MF_MessageLogger
+artdaq-core_Data
+artdaq-core_Core
+${ROOT_CORE}
+${ROOT_GPAD}
+${ROOT_HIST}
+${ROOT_GUI}
+${ROOT_RIO}
+${ROOT_NET}
+${CETLIB_EXCEPT}
+art_Framework_Services_Registry  
+art_root_io
+art_root_io_tfile_support
+art_root_io_TFileService_service
+MF_MessageLogger
 # $ENV{OFFLINE_LIB}/libmu2e_ConditionsService.so
 # $ENV{OFFLINE_LIB}/libmu2e_Mu2eInterfaces.so
 # $ENV{OFFLINE_LIB}/libmu2e_RecoDataProducts.so
