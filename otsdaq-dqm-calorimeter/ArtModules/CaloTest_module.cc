@@ -80,7 +80,7 @@
 #include "otsdaq/MessageFacility/MessageFacility.h"
 #include "otsdaq/Macros/CoutMacros.h"
 #include "otsdaq/Macros/ProcessorPluginMacros.h"
-#include "otsdaq/NetworkUtilities/TCPPublishServer.h"
+#include "otsdaq/NetworkUtilities/TCPSendClient.h"
 //C++:
 #include <algorithm>
 #include <functional>
@@ -120,20 +120,12 @@ namespace ots
 		art::InputTag _sdMCTag;
 		art::InputTag _sdTag;
 
-		double _duty_cycle;
-		string _processName;
-
-		float _nProcess;
-		double _bz0;
-
-		double _nPOT;
-
 		const mu2e::Tracker* _tracker;
 		const mu2e::StrawDigiMCCollection* _mcdigis;
 
 		const art::Event* _event;
 		CaloTestHistos* histos = new CaloTestHistos("hCalo");
-		TCPPublishServer* tcp;
+	  std::unique_ptr<TCPSendClient> tcp;
 
 	};
 }
@@ -145,10 +137,7 @@ ots::CaloTest::CaloTest(fhicl::ParameterSet const& pset)
 	writeOutput_(pset.get<bool>("write_to_file", true)),
 	doStreaming_(pset.get<bool>("stream_to_screen", true)),
 	overwrite_mode_(pset.get<bool>("overwrite_output_file", true)),
-	_duty_cycle(pset.get<float>("dutyCycle", 1.)),
-	_processName(pset.get<string>("processName", "caloTest")),
-	_nProcess(pset.get<float>("nEventsProcessed", 1.)),
-	tcp(new TCPPublishServer(pset.get<int>("listenPort", 6000)))
+	tcp(new TCPSendClient(pset.get<std::string>("address"),pset.get<int>("port", 6000)))
 {
 	TLOG(TLVL_INFO) << "CaloTest construction is beginning ";
 	TLOG(TLVL_DEBUG) << "CaloTest construction complete";
@@ -172,7 +161,7 @@ void ots::CaloTest::analyze(art::Event const& event)
 	message.WriteObject(histos->CaloTest._FirstCaloHist);
 
 	//__CFG_COUT__ << "Broadcasting!" << std::endl;
-	tcp->broadcastPacket(message.Buffer(), message.Length());
+	tcp->sendPacket(message.Buffer(), message.Length());
 
 }
 
