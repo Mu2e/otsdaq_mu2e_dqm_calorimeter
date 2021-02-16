@@ -149,6 +149,7 @@ ots::CaloTest::~CaloTest() {}
 
 void ots::CaloTest::beginJob() {
 	TLOG(TLVL_INFO) << "Started";
+	tcp->connect();
 	histos->BookHistos(tfs);
 }
 
