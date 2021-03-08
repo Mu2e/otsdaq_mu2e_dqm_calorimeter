@@ -267,7 +267,7 @@ analyze( Event const& event )
       if(diagLevel_ > 1) {
 
 
-	std::cout << "timestamp: " << static_cast<int>(hdr->GetTimestamp()) << std::endl;
+	std::cout << "timestamp: " << static_cast<int>(hdr->GetEventWindowTag()) << std::endl;
 	std::cout << "hdr->SubsystemID: " << static_cast<int>(hdr->SubsystemID) << std::endl;
 	std::cout << "dtcID: " << static_cast<int>(hdr->DTCID) << std::endl;
 	std::cout << "rocID: " << static_cast<int>(hdr->ROCID) << std::endl;
@@ -282,7 +282,7 @@ analyze( Event const& event )
 	std::cout << std::endl;
       }
 
-      eventNumber = hdr->GetTimestamp();
+      eventNumber = hdr->GetEventWindowTag();
       
       if(idx < numTrkFrags){
 	mode_ = "TRK";
@@ -394,7 +394,7 @@ analyze( Event const& event )
       
 	    // Text format: timestamp crystalID roID time nsamples samples...
 	    // Example: 1 201 402 660 18 0 0 0 0 1 17 51 81 91 83 68 60 58 52 42 33 23 16
-	    std::cout << "GREPMECAL: " << hdr->GetTimestamp() << " ";
+	    std::cout << "GREPMECAL: " << hdr->GetEventWindowTag() << " ";
 	    std::cout << crystalID << " ";
 	    std::cout << apdID << " ";
 	    std::cout << hitPkt->Time << " ";
