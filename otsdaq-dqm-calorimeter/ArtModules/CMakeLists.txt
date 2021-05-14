@@ -78,8 +78,8 @@ MF_MessageLogger
  )
 
  simple_plugin(CaloSpy "module"
- mu2e-artdaq-core_Overlays
- DTCInterface
+ mu2e_artdaq_core::mu2e-artdaq-core_Overlays
+ pcie_linux_kernel_module::DTCInterface
  artdaq_DAQrate
  artdaq_DAQdata
  artdaq-core_Data
