@@ -321,7 +321,7 @@ analyze(Event const& event)
 					adc_t apdID = hitPkt.DIRACB >> 12;
 					adc_t numSamples = hitPkt.NumberOfSamples;
 					adc_t peakIdx = hitPkt.IndexOfMaxDigitizerSample;
-					adc_t channelID = crystalID % 20;  // *** TEMPORARY until final mapping ***
+					//adc_t channelID = crystalID % 20;  // *** TEMPORARY until final mapping ***
 					if (diagLevel_ > 1) {
 						// Until we have the final mapping, the BoardID is just a placeholder
 						// adc_t BoardId    = cc.DBC_BoardID(pos,channelIdx);
@@ -377,7 +377,7 @@ analyze(Event const& event)
 							//std::cout << " Filling histos for Disk 0" << std::endl;
 						}
 						else {
-							int DiskPoi = CalPoi - 2 * nCryDisk;
+							//int DiskPoi = CalPoi - 2 * nCryDisk;
 							///_hCaloOccupancy1->Fill(DiskPoi);
 							///_hMaxWaveForm1->Fill(DiskPoi,cwf[peakIdx]);
 							///_hTrise1->Fill(DiskPoi,5.*(peakIdx-4));
