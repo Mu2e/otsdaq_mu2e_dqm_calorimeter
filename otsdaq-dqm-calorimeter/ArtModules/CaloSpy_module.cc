@@ -254,12 +254,12 @@ analyze(Event const& event)
 			if (diagLevel_ > 1) {
 
 
-				std::cout << "timestamp: " << static_cast<int>(hdr.GetEventWindowTag().GetEventWindowTag(true)) << std::endl;
-				std::cout << "hdr->SubsystemID: " << static_cast<int>(hdr.GetSubsystemID()) << std::endl;
-				std::cout << "dtcID: " << static_cast<int>(hdr.GetID()) << std::endl;
-				std::cout << "rocID: " << static_cast<int>(hdr.GetLinkID()) << std::endl;
-				std::cout << "packetCount: " << static_cast<int>(hdr.GetPacketCount()) << std::endl;
-				std::cout << "EVB mode: " << static_cast<int>(hdr.GetEVBMode()) << std::endl;
+				std::cout << "timestamp: " << static_cast<int>(hdr->GetEventWindowTag().GetEventWindowTag(true)) << std::endl;
+				std::cout << "hdr->SubsystemID: " << static_cast<int>(hdr->GetSubsystemID()) << std::endl;
+				std::cout << "dtcID: " << static_cast<int>(hdr->GetID()) << std::endl;
+				std::cout << "rocID: " << static_cast<int>(hdr->GetLinkID()) << std::endl;
+				std::cout << "packetCount: " << static_cast<int>(hdr->GetPacketCount()) << std::endl;
+				std::cout << "EVB mode: " << static_cast<int>(hdr->GetEVBMode()) << std::endl;
 
 				for (int i = 7; i >= 0; i--) {
 					std::cout << (adc_t) * (pos + 8 + i);
@@ -277,7 +277,7 @@ analyze(Event const& event)
 
 			int CalPoi = 0;
 
-			if (mode_ == "CAL" && hdr.GetPacketCount() > 0 && parseCAL_ > 0) {// Parse phyiscs information from CAL packets
+			if (mode_ == "CAL" && hdr->GetPacketCount() > 0 && parseCAL_ > 0) {// Parse phyiscs information from CAL packets
 
 				mu2e::CalorimeterFragment calFrag(fragment);
 				auto calData = calFrag.GetCalorimeterData(curBlockIdx);
@@ -387,7 +387,7 @@ analyze(Event const& event)
 
 						// Text format: timestamp crystalID roID time nsamples samples...
 						// Example: 1 201 402 660 18 0 0 0 0 1 17 51 81 91 83 68 60 58 52 42 33 23 16
-						std::cout << "GREPMECAL: " << hdr.GetEventWindowTag().GetEventWindowTag(true) << " ";
+						std::cout << "GREPMECAL: " << hdr->GetEventWindowTag().GetEventWindowTag(true) << " ";
 						std::cout << crystalID << " ";
 						std::cout << apdID << " ";
 						std::cout << hitPkt.Time << " ";
