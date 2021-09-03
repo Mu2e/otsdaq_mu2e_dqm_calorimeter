@@ -41,7 +41,7 @@ cet_set_compiler_flags(DIAGS VIGILANT
 #  cet_add_compiler_flags(-fsanitize=address)
 #endif()
 
-cet_report_compiler_flags()
+##cet_report_compiler_flags()
 
 # these are minimum required versions, not the actual product versions
 #find_ups_product( epics v3_15_2 )
@@ -60,10 +60,10 @@ find_ups_product( otsdaq v1_00_00 )
 #find_ups_product( otsdaq_utilities v1_00_00 )
 #find_ups_product( otsdaq_components v1_00_00 )
 find_ups_root( v5_34_00 )
-#find_ups_boost( v1_50_0 filesystem
-#                        program_options
-#                        unit_test_framework
-# )
+find_ups_boost( v1_50_0 filesystem
+                        program_options
+                        unit_test_framework
+ )
 find_ups_product( offline v10_00_00 )
 find_ups_product( BTrk v1_02_02 )
 find_ups_product(KinKal v0_00_00)
