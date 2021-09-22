@@ -58,7 +58,6 @@
 #include <Offline/RecoDataProducts/inc/StrawDigi.hh>
 #include <Offline/RecoDataProducts/inc/StrawDigiCollection.hh>
 #include <Offline/RecoDataProducts/inc/CaloDigi.hh>
-#include <Offline/DataProducts/inc/XYZVec.hh>
 
 #include <Offline/MCDataProducts/inc/ProtonBunchIntensity.hh>
 
