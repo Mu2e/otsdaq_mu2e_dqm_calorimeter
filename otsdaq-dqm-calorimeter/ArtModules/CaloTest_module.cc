@@ -56,12 +56,9 @@
 #include <Offline/RecoDataProducts/inc/TriggerInfo.hh>
 #include <Offline/RecoDataProducts/inc/ComboHit.hh>
 #include <Offline/RecoDataProducts/inc/StrawDigi.hh>
-#include <Offline/RecoDataProducts/inc/StrawDigiCollection.hh>
 #include <Offline/RecoDataProducts/inc/CaloDigi.hh>
 
 #include <Offline/MCDataProducts/inc/ProtonBunchIntensity.hh>
-
-#include <Offline/GlobalConstantsService/inc/ParticleDataTable.hh>
 
 //OTS:
 #include "otsdaq-dqm-calorimeter/ArtModules/CaloTestHistos.h"

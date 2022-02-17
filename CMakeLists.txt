@@ -64,7 +64,6 @@ find_ups_boost( v1_50_0 filesystem
 find_ups_product( offline v10_00_00 )
 find_ups_product( BTrk v1_02_02 )
 find_ups_product(KinKal v0_00_00)
-find_ups_product( heppdt v3_04_01f )
 
 # XDAQ Extra setup
 find_ups_product( artdaq_database v1_03_07 )
