@@ -1,8 +1,8 @@
 # ======================================================================
-#  otsdaq-mu2e-dqm-calorimeter main build file
+#  otsdaq_mu2e_dqm_calorimeter main build file
 #
 #  cd .../path/to/build/directory
-#  source .../path/to/otsdaq-mu2e-dqm-calorimeter/ups/setup_for_development
+#  source .../path/to/otsdaq_mu2e_dqm_calorimeter/ups/setup_for_development
 #  buildtool
 # ======================================================================
 
@@ -100,7 +100,7 @@ include(BuildPlugins)
 include(CetTest)
 
 # Code
-add_subdirectory(otsdaq-dqm-calorimeter)
+add_subdirectory(otsdaq-mu2e-dqm-calorimeter)
 
 # Useful scripts
 add_subdirectory(tools)

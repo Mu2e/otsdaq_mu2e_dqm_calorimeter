@@ -61,7 +61,7 @@
 #include <Offline/MCDataProducts/inc/ProtonBunchIntensity.hh>
 
 //OTS:
-#include "otsdaq-dqm-calorimeter/ArtModules/CaloTestHistos.h"
+#include "otsdaq-mu2e-dqm-calorimeter/ArtModules/CaloTestHistos.h"
 #include "otsdaq/MessageFacility/MessageFacility.h"
 #include "otsdaq/Macros/CoutMacros.h"
 #include "otsdaq/Macros/ProcessorPluginMacros.h"

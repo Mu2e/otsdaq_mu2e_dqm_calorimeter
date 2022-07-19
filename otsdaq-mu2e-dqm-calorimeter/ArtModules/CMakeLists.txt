@@ -22,7 +22,7 @@ art_make( BASENAME_ONLY
 # )
 
  simple_plugin(CaloTest "module"
- mu2e_artdaq_core::mu2e-artdaq-core_Overlays
+ artdaq_core_mu2e::artdaq-core-mu2e_Overlays
  artdaq::DAQdata
  otsdaq::NetworkUtilities
  art_root_io::TFileService_service
@@ -30,7 +30,7 @@ art_make( BASENAME_ONLY
  )
 
  simple_plugin(CaloSpy "module"
- mu2e_artdaq_core::mu2e-artdaq-core_Overlays
+ artdaq_core_mu2e::artdaq-core-mu2e_Overlays
  )
 
 # simple_plugin(CaloCosmics "module"
@@ -45,7 +45,7 @@ art_make( BASENAME_ONLY
 # )
 
 # Simple_plugin(PrescaleEvent "module"
-# otsdaq-trigger_Overlays
+# otsdaq-mu2e-trigger_Overlays
 # artdaq_DAQrate
 # artdaq_DAQdata
 # artdaq-core_Data
@@ -56,13 +56,13 @@ art_make( BASENAME_ONLY
 # )
 
 # simple_plugin(OfflineFragmentsDumper "module"
-#   mu2e-artdaq-core_Overlays
+#   artdaq-core-mu2e_Overlays
 #   ${CETLIB_EXCEPT}
 # )
 
 # simple_plugin(OfflineFragmentReader "source"
 #   MF_MessageLogger
 #   artdaq_DAQdata
-#   otsdaq-trigger_ArtModules
+#   otsdaq-mu2e-trigger_ArtModules
 #   )
 

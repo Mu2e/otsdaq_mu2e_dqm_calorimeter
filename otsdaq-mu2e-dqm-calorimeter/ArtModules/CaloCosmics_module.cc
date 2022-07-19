@@ -11,7 +11,7 @@
 #include "fhiclcpp/ParameterSet.h"
 
 #include "art/Framework/Principal/Handle.h"
-#include "mu2e-artdaq-core/Overlays/ArtFragmentReader.hh"
+#include "artdaq-core-mu2e/Overlays/ArtFragmentReader.hh"
 
 #include <artdaq-core/Data/Fragment.hh>
 
